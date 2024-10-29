@@ -1,3 +1,4 @@
+/* Đặt font chữ và canh giữa trang */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -8,41 +9,43 @@ body {
   margin: 0;
 }
 
+/* Tạo khung cho giao diện */
 .container {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 800px;
+  width: 600px;
 }
 
+/* Flex container để tạo cột */
 .flex-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: flex-start;
 }
 
+/* Cột input và nút */
 .input-section {
   flex: 1;
   margin-right: 20px;
 }
 
+/* Cột bảng */
 .table-section {
   flex: 1;
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
+  max-height: 300px; /* Giới hạn chiều cao của bảng */
+  overflow-y: auto;  /* Cho phép cuộn bảng khi nội dung vượt quá */
+  border: 1px solid #ddd; /* Viền bao quanh bảng */
 }
 
+/* Style cho tiêu đề */
 h1 {
   color: #333;
 }
 
-h2 {
-  color: #333;
-}
-
+/* Style cho ô nhập liệu */
 .input-number {
   width: 100%;
   padding: 10px;
@@ -52,6 +55,7 @@ h2 {
   font-size: 16px;
 }
 
+/* Style cho nút bấm */
 .btn {
   background-color: #007BFF;
   color: #fff;
@@ -64,30 +68,12 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* Hover effect cho nút bấm */
 .btn:hover {
   background-color: #0056b3;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 18px;
-}
-
-th, td {
-  padding: 15px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.correct-status {
-  background-color: #d4edda;
-}
-
-.incorrect-status {
-  background-color: #f8d7da;
-}
-
+/* Nút đánh giá Đúng */
 #correctButton {
   background-color: #28a745; /* Màu xanh lá cây */
   color: #fff;
@@ -105,4 +91,41 @@ th, td {
 
 #incorrectButton:hover {
   background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}
+
+/* Style cho bảng hiển thị số */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+thead {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+tbody td {
+  background-color: #f9f9f9;
+}
+
+/* Màu sắc cho trạng thái "Đúng" */
+.correct-status {
+  color: #28a745; /* Màu xanh lá */
+  font-weight: bold;
+}
+
+/* Màu sắc cho trạng thái "Sai" */
+.incorrect-status {
+  color: #dc3545; /* Màu đỏ */
+  font-weight: bold;
+}
+
+#result{
+  font-size: 30px;
 }

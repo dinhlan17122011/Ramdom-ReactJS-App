@@ -31,18 +31,31 @@ function App() {
     };
 
     const randomNumber = () => {
+      // Lọc ra các số chưa được chọn
       const availableNumbers = numbers.filter(num => num.status === '');
+      
+      // Kiểm tra nếu không còn số nào chưa được chọn
       if (availableNumbers.length === 0) {
-          document.getElementById('result').textContent = "Hết"; // Hiện từ "Hết" khi không còn số
+          document.getElementById('result').textContent = "Hết";
           document.getElementById('ratingButtons').style.display = 'none';
           return;
       }
       
+      // Chọn ngẫu nhiên một số từ các số chưa được chọn
       const randomIndex = Math.floor(Math.random() * availableNumbers.length);
       const randomNum = availableNumbers[randomIndex];
+  
+      // Cập nhật số được chọn vào state
       setSelectedNumber(randomNum);
       document.getElementById('result').textContent = `Số: ${randomNum.value}`;
       document.getElementById('ratingButtons').style.display = 'block';
+  
+      // Đánh dấu số này là đã chọn
+      setNumbers(prevNumbers =>
+          prevNumbers.map(num =>
+              num.value === randomNum.value ? { ...num, status: 'Đã chọn' } : num
+          )
+      );
   };
 
     const correctHandler = () => {
@@ -98,6 +111,8 @@ function App() {
             });
 
             doc.render();
+            console.log(doc);
+            
             const out = doc.getZip().generate({ type: 'blob' });
             saveAs(out, 'KetQuaDanhGia.docx');
         } catch (error) {
